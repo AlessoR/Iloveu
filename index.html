@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de Amor</title>
+    <style>
+        /* Estilos del fondo y el cuerpo */
+        body {
+            background: linear-gradient(to bottom, #ff99cc, #ff66b2);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            color: #fff;
+        }
 
+        /* Contenedor principal de la carta */
+        .card {
+            background: #fff;
+            color: #ff4d6d;
+            border-radius: 20px;
+            padding: 40px;
+            width: 350px;
+            max-width: 90%;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            text-align: center;
+            font-size: 1.2rem;
+            animation: popIn 1s ease-out;
+        }
+
+        /* Animación de entrada de la carta */
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Estilo para el botón de "Ver más" */
+        .btn {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #ff1a4c;
+        }
+
+        /* Estilo de los corazones flotantes */
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: #ff4d6d;
+            animation: floatingHeart 4s infinite linear;
+        }
+
+        @keyframes floatingHeart {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+
+        /* Estilo para la repetición de "Te Amo" */
+        .te-amo-text {
+            margin: 10px 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .hidden-text {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Para los dispositivos pequeños */
+        @media (max-width: 600px) {
+            .card {
+                width: 90%;
+                padding: 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Te Amo 💖</h1>
+        <div class="te-amo-text">
+            Te amo, te amo, te amo, te amo, te amo, te amo, te amo, te amo, te amo, te amo...<br>
+            ¡Te amo muchísimo! 💕
+        </div>
+        <button class="btn" onclick="showMore()">Ver más te amo...</button>
+
+        <!-- Texto oculto que aparecerá después de hacer clic -->
+        <div class="hidden-text" id="extraText">
+            Te amo más de lo que las palabras pueden expresar. 💞<br>
+            Eres mi todo, mi razón de ser. 🌹<br>
+            ¡Te amo infinitamente! 🫶🏻
+        </div>
+    </div>
+
+    <!-- Corazones flotantes -->
+    <script>
+        // Función para crear corazones flotantes aleatorios
+        function createFloatingHearts() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';  // Posición horizontal aleatoria
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';  // Duración aleatoria
+            document.body.appendChild(heart);
+
+            // Eliminar el corazón después de su animación
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);  // Tiempo de duración de la animación
+        }
+
+        setInterval(createFloatingHearts, 500);  // Crear corazones flotantes cada 500ms
+
+        // Función para mostrar más texto al hacer clic
+        function showMore() {
+            const extraText = document.getElementById('extraText');
+            extraText.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
